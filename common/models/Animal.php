@@ -18,6 +18,15 @@ use Yii;
  */
 class Animal extends \yii\db\ActiveRecord
 {
+    public function collectProduct()
+    {
+        return new Product([
+            'animal_id' => ,
+            'type' =>  ,
+            'amount' =>  ,
+            'unit' =>
+        ]);
+    }
     /**
      * {@inheritdoc}
      */
