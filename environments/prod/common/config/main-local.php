@@ -3,8 +3,8 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
-            'username' => 'root',
+            'dsn' => 'pgsql:host=localhost;dbname=task-oxem',
+            'username' => 'postgres',
             'password' => '',
             'charset' => 'utf8',
         ],
