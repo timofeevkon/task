@@ -2,7 +2,8 @@
 
 namespace common\models;
 
-use Yii;
+use common\models\query\AnimalQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "animal".
@@ -16,16 +17,18 @@ use Yii;
  *
  * @property Crib $crib
  */
-class Animal extends \yii\db\ActiveRecord
+class Animal extends ActiveRecord
 {
     public function collectProduct()
     {
-        return new Product([
-            'animal_id' => ,
-            'type' =>  ,
-            'amount' =>  ,
-            'unit' =>
+        $product = new Product([
+            'animal_id' => $this->animal_id,
+            'type' =>  $this->type,
+            'amount' =>  rand($this->product_amount_range),
+            'unit' => $this->product_unit
         ]);
+        $product->save();
+        return $product;
     }
     /**
      * {@inheritdoc}
@@ -74,10 +77,10 @@ class Animal extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\AnimalQuery the active query used by this AR class.
+     * @return AnimalQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\AnimalQuery(get_called_class());
+        return new AnimalQuery(get_called_class());
     }
 }
