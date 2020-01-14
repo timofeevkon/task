@@ -19,12 +19,16 @@ use yii\db\ActiveRecord;
  */
 class Animal extends ActiveRecord
 {
+    /**
+     * @return Product
+     */
     public function collectProduct()
     {
+        $rand = rand($this->product_amount_range[0], $this->product_amount_range[1]);
         $product = new Product([
             'animal_id' => $this->animal_id,
-            'type' =>  $this->type,
-            'amount' =>  rand($this->product_amount_range),
+            'type' =>  $this->product_type,
+            'amount' => $rand,
             'unit' => $this->product_unit
         ]);
         $product->save();
